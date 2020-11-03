@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Spielfeld
+comment1.params=
+comment1.target=Spielfeld()
+comment2.params=
+comment2.target=Punkt[]\ punkteEingeben()
+comment3.params=poi
+comment3.target=void\ poiSortieren(Punkt[])
+comment4.params=index1\ index2
+comment4.target=void\ tauschen(int,\ int)
+comment5.params=
+comment5.target=void\ poiAbfahren()
+numComments=6
