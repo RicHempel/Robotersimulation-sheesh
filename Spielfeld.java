@@ -171,7 +171,8 @@ import java.awt.Color;
       
       private int zufallszahl( int von, int bis )
       {
-         int zufallszahl = zufallsgenerator.nextInt(bis);
+         int range = bis - von;
+         int zufallszahl = zufallsgenerator.nextInt(range) + von;
          return zufallszahl;
       }
     
