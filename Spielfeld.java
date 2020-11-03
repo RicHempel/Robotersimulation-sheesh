@@ -178,9 +178,16 @@ import java.awt.Color;
     
       private Color zufallsfarbe()
       {
+<<<<<<< Updated upstream
         Color zufallsfarbe  = [zufallszahl(0,256),zufallszahl(0,256),zufallszahl(0,256)]
         System.out.println( " Die zufällig generierte Farbe ist: " + zufallsfarbe.toString());
         return zufallsfarbe;
+=======
+        
+        Color zufallsfarbe  = ranFarbe.nextInt();
+        System.out.println( " Die zufällig generierte Farbe hat den RGB-Wert: " );
+        return zufallsfarbe
+>>>>>>> Stashed changes
       }
 }
 
