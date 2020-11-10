@@ -31,7 +31,7 @@ import java.awt.Color;
           int x = sc1.nextInt();
           while (x<= 0)
           {
-           System.out.println( " X muss sich zwischen 0 udn 1000 befinden! Bitte wählen Sie erneut!");
+           System.out.println( " X muss sich zwischen 0 und 1000 befinden! Bitte wählen Sie erneut!");
            Scanner sc2 = new Scanner(System.in);
            x = sc2.nextInt();
           }
@@ -108,68 +108,50 @@ import java.awt.Color;
         poiSortieren(punkte);
      }
     
-     public ArrayList<Rechteck> hindernislisteErzeugen()
+     public ArrayList<Rechteck> hindernisListeErzeugen()
      {
-        ArrayList<Rechteck> hindernisse = new ArrayList<Rechteck>();
-        System.out.println( " Wie viele Hindernisse sollen sich auf dem Spielfeld befinden? ");
-        Scanner scH = new Scanner(System.in);
-        int aH = scH.nextInt(); // ah = Anzahl der Hindernisse
-        System.out.println( "Auf dem Spielfeld sollen sich " + aH + " Hindernisse befinden.");
-        zufallsgenerator = new Random();
-        int i = 1; // i = das wievielte Rechteck wurde erzeugt
-        int nxtFarbe;
-        int zufallszahl; 
-        int falsch = 0; //bisher überlappen sich 0 Rechtecke
-        
-         while( hindernisse.size() < aH ) // wenn die gesamte Fläche der Hindernisse < Anzahl der Hindernisse ist auf jeden Fall noch Platz
-         {
-             int x = zufallszahl(1000);
-             int y = zufallszahl(1000);
-             Punkt position1 = new Punkt ( x, y );
-             int breite1 = zufallszahl(1000);
-             int laenge1 = zufallszahl(1000);
-             Hindernisse size1 = new Punkt ( breite , laenge );
-             String bezeichung1 = "Rechteck" + i ;
-             Color farbe = zufallsfarbe();
-             Rechtech r = new Rechteck ( position1, breite1, laenge1, bezeichnung1, farbe1);
-             
-             if( position1.getX() + r.getBreite() < 1000 && position.getY() + r.getLaenge() < 1000)
-              {
-                 int a = 0;
-                 bolean b = false;
-                 int wahr = 0;
-                 
-                 if( 0 < hindernisse.size() )
-                  {
-                      while( a < hindernisse.size() )
-                       {
-                           b = r.ueberlappt(hindernisse.get(a));
-                            if ( b == true)
-                             {
-                                 wahr++;
-                                 if( wahr == hindernisse.size() )
-                                  {
-                                      hindernise.add(r);
-                                      falsch = 0; // der Zähler für " wie viele falsche Hindernisse hintereinander " wird 0 gesetzt
-                                      i++;
-                                      break;
-                                    }
-                                }
-                           a++;
-                           
-                            if ( b == false )
-                             {
-                                 falsch ++;
-                                 break;
-                                }
-                        }
-                 }        
+         ArrayList<Rechteck> hindernisListe = new ArrayList<Rechteck>();
+         System.out.println( "Wie viele Hindernisse sollen sich auf dem Spielfeld befinden? ");
+         Scanner sc1 = new Scanner(System.in);
+         int hindernisAnzahl = sc1.nextInt();
+         System.out.println( "Es werden " + hindernisAnzahl + " Hindernisse zufällig generiert.");
+         do{             
+           int f=0;
+           beginn:
+           for (int j=0; j<hindernisListe.size();j++) //
+           {
+               Rechteck jetzt = zufallsRechteck(hindernisListe.size()+1); //Zufallshindernisse werden erzeugt
+               if (jetzt.ueberlappt(hindernisListe.get(j)))               
+               {
+                   f++;
+                   if (f>50)
+                   {
+                       System.out.println (" Es gab zu viele Überschneidungen bei Rechtecken.");
+                       return null;//komplette Funktion wird abgebrochen
+                    }
+                   break beginn; //springt zu "beginn"
+                }
+               hindernisListe.add(jetzt); // wenn das Rechteck nicht überlappt wird es der Array-Liste hinzugefügt
+               f=0;
             }
-         }
-         return hindernisse;
-      }
+            
+        }while(hindernisListe.size()<hindernisAnzahl-1); //so lange bis gewünschte Anzahl an Hindernissen erreicht ist
+        return hindernisListe;
+    }
       
-      private int zufallszahl( int von, int bis )
+    private Rechteck zufallsRechteck(int i)
+      {
+          int laenge = zufallszahl(1,100);
+          int breite = zufallszahl(1,100);
+          int positionX = zufallszahl(0,1000-breite);
+          int positionY = zufallszahl(0,1000-laenge);
+          String bezeichnung = "Rechteck " + i ;
+          Punkt position = new Punkt(positionX, positionY);
+          Rechteck jetzt = new Rechteck(position, breite, laenge, bezeichnung, zufallsfarbe());
+          return jetzt;
+        }
+        
+        private int zufallszahl( int von, int bis )
       {
          int range = bis - von;
          int zufallszahl = zufallsgenerator.nextInt(range) + von;
@@ -178,7 +160,7 @@ import java.awt.Color;
     
       private Color zufallsfarbe()
       {
-        Color zufallsfarbe  = new Color(zufallszahl(0,256),zufallszahl(0,256),zufallszahl(0,256)])
+        Color zufallsfarbe  = new Color(zufallszahl(0,256),zufallszahl(0,256),zufallszahl(0,256));
         System.out.println( " Die zufällig generierte Farbe ist: " + zufallsfarbe.toString());
         return zufallsfarbe;
       }

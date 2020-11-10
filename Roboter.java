@@ -25,6 +25,11 @@ public class Roboter
         while( spracherkennung.size() < aH )
         System.out.ptintln ("Stellen Sie eine Frage");
         Scanner sc = new Scanner(System.in);
+        int x = scH.nextInt(); //x = Eingabe
+        
+        
+       
+       if ( x == enum Stichword
         
         
         
