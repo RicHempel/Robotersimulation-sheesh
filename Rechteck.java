@@ -9,12 +9,6 @@ public class Rechteck
     private int laenge; //y-Richtung
     private String bezeichnung; //"string" weil es ein Word sein soll
     private Color farbe; // Farbe ( Color.red, Color.yellow ) 
-    private int x;
-    private int y;
-    private int dx;
-    private int dy;
-    private int x1; // x-Verschiebevektor
-    private int y1; // y-Verschiebevektor
     
     
     public Rechteck() // Anfangswerte definieren
@@ -96,8 +90,8 @@ public class Rechteck
     
     public void bewegeUm( Punkt verschiebevektor )
     {
-        x1 = verschiebevektor.getX();
-        y1 = verschiebevektor.getY();
+        int x1 = verschiebevektor.getX();
+        int y1 = verschiebevektor.getY();
         position.bewegeUm(x1,y1); 
     }
     
