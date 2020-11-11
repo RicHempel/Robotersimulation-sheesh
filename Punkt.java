@@ -4,13 +4,7 @@ public class Punkt
 {
     private int x;
     private int y;
-    private int dx;
-    private int dy;
-    private int x2; // 2. Punkt
-    private int y2;
-    private double d; // a als Abstand der 2 Punkte definieren
     
-   
     public Punkt()
     {
         // Instanzvariable initialisieren
@@ -56,9 +50,7 @@ public class Punkt
     
     public double gibAbstand ( int x2, int y2 )
     {
-        this.x2 = x2; // 2. Punkt definieren
-        this.y2 = y2;
-        this.d = sqrt (((x2-x)*(2-x))+((y2-y)*(y2-y))); // Satz des Phytagoras
+        double d = sqrt(((x2-x)*(x2-x))+((y2-y)*(y2-y))); // Satz des Phytagoras
         return d; // Abstand ausgeben
     }
     

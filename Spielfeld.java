@@ -115,8 +115,8 @@ import java.awt.Color;
          Scanner sc1 = new Scanner(System.in);
          int hindernisAnzahl = sc1.nextInt();
          System.out.println( "Es werden " + hindernisAnzahl + " Hindernisse zufällig generiert.");
+         int f=0;
          do{             
-           int f=0;
            beginn:
            for (int j=0; j<hindernisListe.size();j++) //
            {
@@ -129,13 +129,14 @@ import java.awt.Color;
                        System.out.println (" Es gab zu viele Überschneidungen bei Rechtecken.");
                        return null;//komplette Funktion wird abgebrochen
                     }
-                   break beginn; //springt zu "beginn"
                 }
-               hindernisListe.add(jetzt); // wenn das Rechteck nicht überlappt wird es der Array-Liste hinzugefügt
-               f=0;
+                else{
+                    hindernisListe.add(jetzt); // wenn das Rechteck nicht überlappt wird es der Array-Liste hinzugefügt
+                    f=0;
+                }
             }
             
-        }while(hindernisListe.size()<hindernisAnzahl-1); //so lange bis gewünschte Anzahl an Hindernissen erreicht ist
+        }while(hindernisListe.size()<hindernisAnzahl); //so lange bis gewünschte Anzahl an Hindernissen erreicht ist
         return hindernisListe;
     }
       
