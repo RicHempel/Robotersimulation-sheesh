@@ -126,7 +126,7 @@ import java.util.concurrent.ThreadLocalRandom;
           int breite = zufallszahl(1,100);
           int positionX = zufallszahl(0,1000-breite);
           int positionY = zufallszahl(0,1000-laenge);
-          String bezeichnung = "Rechteck " + i ;
+          String bezeichnung = "Rechteck" + i ;
           Punkt position = new Punkt(positionX, positionY);
           Rechteck jetzt = new Rechteck(position, breite, laenge, bezeichnung, zufallsfarbe());
           return jetzt;
