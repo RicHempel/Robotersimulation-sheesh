@@ -106,8 +106,16 @@ import java.util.concurrent.ThreadLocalRandom;
             Rechteck rechteck = zufallsRechteck(i);
             if(!ueberlappt_test(rechteck, hindernisListe)){
                 hindernisListe.add(rechteck);
+                fehler = 0;
             }
-            else{fehler++;i--;}
+            else{
+                fehler++;
+                i--;
+                if(fehler>=50){
+                System.out.println("50 Überlappungen in Folge, Abbruch");
+                return null;
+                }
+            }
             }
          return hindernisListe;
     }
@@ -126,7 +134,7 @@ import java.util.concurrent.ThreadLocalRandom;
         
         private int zufallszahl( int von, int bis )
       {
-         int zufallszahl = ThreadLocalRandom.current().nextInt(von, bis + 1);
+         int zufallszahl = ThreadLocalRandom.current().nextInt(von, bis);
          return zufallszahl;
       }
     
