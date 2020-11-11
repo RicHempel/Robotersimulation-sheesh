@@ -2,6 +2,8 @@
 comment0.target=Spielfeld
 comment1.params=
 comment1.target=Spielfeld()
+comment10.params=r\ hindernisListe
+comment10.target=boolean\ ueberlappt_test(Rechteck,\ java.util.ArrayList)
 comment2.params=
 comment2.target=Punkt[]\ punkteEingeben()
 comment3.params=poi
@@ -18,4 +20,4 @@ comment8.params=von\ bis
 comment8.target=int\ zufallszahl(int,\ int)
 comment9.params=
 comment9.target=java.awt.Color\ zufallsfarbe()
-numComments=10
+numComments=11

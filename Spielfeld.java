@@ -1,6 +1,7 @@
 import java.util.Scanner;
 import java.util.*;
 import java.awt.Color;
+import java.util.concurrent.ThreadLocalRandom;
 
  public class Spielfeld
  {
@@ -8,7 +9,6 @@ import java.awt.Color;
      private int laenge = 1000; // Länge und Breite des Spielfeldes definiert
      private int a; // Anzahl der Punkte
      private Punkt[] punkte;
-     private static Random zufallsgenerator;
     
      public Spielfeld()
      {
@@ -101,29 +101,15 @@ import java.awt.Color;
          Scanner sc1 = new Scanner(System.in);
          int hindernisAnzahl = sc1.nextInt();
          System.out.println( "Es werden " + hindernisAnzahl + " Hindernisse zufällig generiert.");
-         int f=0;
-         do{             
-           beginn:
-           for (int j=0; j<hindernisListe.size();j++) //
-           {
-               Rechteck jetzt = zufallsRechteck(hindernisListe.size()+1); //Zufallshindernisse werden erzeugt
-               if (jetzt.ueberlappt(hindernisListe.get(j)))               
-               {
-                   f++;
-                   if (f>50)
-                   {
-                       System.out.println (" Es gab zu viele Überschneidungen bei Rechtecken.");
-                       return null;//komplette Funktion wird abgebrochen
-                    }
-                }
-                else{
-                    hindernisListe.add(jetzt); // wenn das Rechteck nicht überlappt wird es der Array-Liste hinzugefügt
-                    f=0;
-                }
+         int fehler=0;
+         for(int i=1; i<hindernisAnzahl+1; i++){
+            Rechteck rechteck = zufallsRechteck(i);
+            if(!ueberlappt_test(rechteck, hindernisListe)){
+                hindernisListe.add(rechteck);
             }
-            
-        }while(hindernisListe.size()<hindernisAnzahl); //so lange bis gewünschte Anzahl an Hindernissen erreicht ist
-        return hindernisListe;
+            else{fehler++;i--;}
+            }
+         return hindernisListe;
     }
       
     private Rechteck zufallsRechteck(int i)
@@ -140,8 +126,7 @@ import java.awt.Color;
         
         private int zufallszahl( int von, int bis )
       {
-         int range = bis - von;
-         int zufallszahl = zufallsgenerator.nextInt(range) + von;
+         int zufallszahl = ThreadLocalRandom.current().nextInt(von, bis + 1);
          return zufallszahl;
       }
     
@@ -151,6 +136,16 @@ import java.awt.Color;
         System.out.println( " Die zufällig generierte Farbe ist: " + zufallsfarbe.toString());
         return zufallsfarbe;
       }
+      
+      private boolean ueberlappt_test(Rechteck r, ArrayList<Rechteck> hindernisListe){
+        if(hindernisListe.size() < 1){return false;}
+          for(int i=0; i<hindernisListe.size();i++){
+            if(r.ueberlappt(hindernisListe.get(i))){
+                return true;
+            }
+        }
+        return false;
+        }
 }
 
 
