@@ -106,57 +106,7 @@ public class Rechteck
     
     public boolean ueberlappt ( Rechteck r)
     {        
-        Punkt linksOben1 = new Punkt(position.getX() , position.getY());
-        Punkt rechtsOben1 = new Punkt(position.getX() + breite , position.getY() );
-        Punkt linksUnten1 = new Punkt(position.getX() , position.getY() + laenge );
-        Punkt rechtsUnten1 = new Punkt(position.getX() + breite , position.getY() + laenge);
-        Punkt position2 = r.getPosition();
-        Punkt linksOben2 = new Punkt(position2.getX() , position2.getY());
-        Punkt rechtsOben2 = new Punkt(position.getX() + r.getBreite() , position2.getY());
-        Punkt linksUnten2 = new Punkt(position2.getX() , position2.getY() + laenge );
-        Punkt rechtsUnten2 = new Punkt(position2.getX() + breite , position2.getY() + laenge );
-        
-        if ( linksOben1.getX() <= rechtsUnten2.getX() && linksOben1.getY() < rechtsUnten2.getY() )
-        {
-            return false;
-        }
-        
-        if ( linksOben1.getX() < rechtsUnten2.getX() && linksOben1.getY() <= rechtsUnten2.getY() )
-        {
-            return false;
-        }
-        
-        if ( rechtsOben1.getX() >= linksUnten2.getX() && rechtsOben1.getY() < linksUnten2.getY() )
-        {
-             return false;
-        }
-        
-        if ( rechtsOben1.getX() > linksUnten2.getX() && rechtsOben1.getY() <= linksUnten2.getY() )
-        {
-             return false;
-        }
-        
-        if ( linksUnten1.getX() <= rechtsOben2.getX() && linksUnten1.getY() > rechtsOben2.getY() )
-        {
-             return false;
-        }
-        
-        if ( linksUnten1.getX() < rechtsOben2.getX() && linksUnten1.getY() >= rechtsOben2.getY() )
-        {
-             return false;
-        }
-        
-        if ( rechtsUnten1.getX() >= linksOben2.getX() && rechtsUnten1.getY() > linksOben2.getY() )
-        {
-             return false;
-        }
-        
-        if ( rechtsUnten1.getX() > linksOben2.getX() && rechtsUnten1.getY() >= linksOben2.getY() )
-        {
-             return false;
-        }
-
-        return true;
+        return position.getX() < r.position.getX() + r.breite && position.getX() + breite > r.position.getX() && position.getY() < r.position.getY() + r.laenge && position.getY() + laenge > r.position.getY();
     } 
     
 }
