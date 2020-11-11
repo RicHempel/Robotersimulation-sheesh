@@ -1,10 +1,15 @@
-
+import java.lang.Enum;
+import java.util.Scanner;
 
 public class Roboter
 {
-    // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
-    private int x;
 
+    private int x;
+    int spracherkennung;
+    public enum Stichwort //vlt.static
+    {
+        NAME, ALTER, HERSTELLER, GESCHLECHT, ENDE
+    }
     /**
      * Konstruktor für Objekte der Klasse Roboter
      */
@@ -22,18 +27,38 @@ public class Roboter
      */
     public void spracherkennung()
     {
-        while( spracherkennung.size() < aH )
-        System.out.ptintln ("Stellen Sie eine Frage");
+   
+        System.out.println ("Stellen Sie eine Frage");
         Scanner sc = new Scanner(System.in);
-        int x = scH.nextInt(); //x = Eingabe
+        String x = sc.nextLine(); //x = Eingabe
         
+        
+        
+       switch(x)
+       {
+           case Stichwort.NAME:
+           System.out.println(" Mein Name ist Bond, James Bond.!) ");
+           break;
+           
+           case NDroid.Stichwort.ALTER: 
+           System.out.println(" Ich bin erst heute geupdatet worden.");
+           break;
+           
+           case NDroid.Stichwort.HERSTELLER:
+           System.out.println(" Ich wurde von der PR GmbH & Co programmiert.");
+           break;
+           
+           case NDroid.Stichwort.GESCHLECHT:
+           System.out.println(" Ich bin EIN Roboter. Also scheine ich ein Männlicher zu sein.");
+           break;
+           
+           case NDroid.Stichwort.ENDE:
+           return null;
+        }
         
        
-       if ( x == enum Stichword
-        
-        
-        
+       
       
-        return x + y;
+        
     }
 }
