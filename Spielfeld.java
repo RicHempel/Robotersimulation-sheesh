@@ -22,41 +22,27 @@ import java.awt.Color;
        Scanner sc = new Scanner(System.in); // System.in liest Daten aus dem Kontroler
        int a = sc.nextInt(); //java wartet auf Antwort 
        int n = 1; // n steht für Nummer des Punktes startend mit 1
-       System.out.println("Wie lauten die Koordinaten der " + a + " Punkte?");
-       punkte = new Punkt[a+1];
+       punkte = new Punkt[a];
        punkte[0] = new Punkt(0,0);
-        while ( a>0)
+       System.out.println("Wie lauten die Koordinaten der " + a + " Punkte?");
+        while (a>1)
         {
-          Scanner sc1 = new Scanner(System.in);
-          int x = sc1.nextInt();
-          while (x<= 0)
+          int x = sc.nextInt();
+          while (x<=0 | x>=1000)
           {
-           System.out.println( " X muss sich zwischen 0 und 1000 befinden! Bitte wählen Sie erneut!");
-           Scanner sc2 = new Scanner(System.in);
-           x = sc2.nextInt();
+           System.out.println("X muss sich zwischen 0 und 1000 befinden! Bitte wählen Sie erneut!");
+           x = sc.nextInt();
           }
-          while ( x>=1000)
+          
+          int y = sc.nextInt();
+          while (y<=0 | y>=1000)
           {
-              System.out.println( " X muss sich zwischen 0 udn 1000 befinden! Bitte wählen Sie erneut!");
-              Scanner sc2 = new Scanner(System.in);
-              x = sc2.nextInt();
-          }
-          Scanner sc3 = new Scanner(System.in);
-          int y = sc3.nextInt();
-          while ( y<=0)
-          {
-             System.out.println( " Y muss sich zwischen 0 udn 1000 befinden! Bitte wählen Sie erneut!");
+             System.out.println("Y muss sich zwischen 0 und 1000 befinden! Bitte wählen Sie erneut!");
              Scanner sc4 = new Scanner(System.in);
              y = sc4.nextInt();
           }
-          while ( y>=1000)
-          {
-             System.out.println( " Y muss sich zwischen 0 udn 1000 befinden! Bitte wählen Sie erneut!");
-             Scanner sc4 = new Scanner(System.in);
-             y = sc4.nextInt();
-          }
-         punkte [a] = new Punkt(x,y);
-         System.out.println( "Die Koordinaten des " + n + " . Punktes lauten ( " + x + " / " + y + ")");
+         punkte [a-1] = new Punkt(x,y);
+         System.out.println("Die Koordinaten des " + n + ". Punktes lauten (" + x + "/" + y +")");
          a--;
          n++; 
       }      
