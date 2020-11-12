@@ -30,30 +30,28 @@ public class Roboter
    
         System.out.println ("Stellen Sie eine Frage");
         Scanner sc = new Scanner(System.in);
-        String x = sc.nextLine(); //x = Eingabe
+        Stichwort eingabe = Stichwort.valueOf(sc.next().toUpperCase());
         
-        
-        
-       switch(x)
+       switch(eingabe)
        {
-           case Stichwort.NAME:
+           case NAME:
            System.out.println(" Mein Name ist Bond, James Bond.!) ");
            break;
            
-           case NDroid.Stichwort.ALTER: 
+           case ALTER: 
            System.out.println(" Ich bin erst heute geupdatet worden.");
            break;
            
-           case NDroid.Stichwort.HERSTELLER:
+           case HERSTELLER:
            System.out.println(" Ich wurde von der PR GmbH & Co programmiert.");
            break;
            
-           case NDroid.Stichwort.GESCHLECHT:
+           case GESCHLECHT:
            System.out.println(" Ich bin EIN Roboter. Also scheine ich ein Männlicher zu sein.");
            break;
            
-           case NDroid.Stichwort.ENDE:
-           return null;
+           case ENDE:
+           return;
         }
         
        
