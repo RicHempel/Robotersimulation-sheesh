@@ -12,10 +12,24 @@ import java.util.concurrent.ThreadLocalRandom;
     
      public Spielfeld()
      {
-        
+         Roboter roboter = new Roboter();
      }
-
-    
+     public static void main(String[] args){
+         Spielfeld aktuellesSpielfeld = new Spielfeld();
+         Scanner scanner = new Scanner(System.in);
+         System.out.println("Funktion auswählen:");
+         System.out.println("1: Punkte eingeben");
+         System.out.println("2: Punkte sortieren");
+         System.out.println("3: Hindernisse erstellen");
+         String in = scanner.next();
+         switch(in){
+             case "1": aktuellesSpielfeld.punkteEingeben();
+             case "2": aktuellesSpielfeld.poiSortieren(aktuellesSpielfeld.punkte);
+             case "3": aktuellesSpielfeld.hindernisListeErzeugen();
+             case "ENDE": System.exit(0);
+             default: System.out.println("Befehl nicht erkannt");
+         }
+     }
      public Punkt[] punkteEingeben() //Koordinaten müssen einzelnd eingegeben werden
      {
        System.out.println("Wie viele Punkte möchten Sie haben?");
