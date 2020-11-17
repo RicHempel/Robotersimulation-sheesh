@@ -15,20 +15,23 @@ import java.util.concurrent.ThreadLocalRandom;
          Roboter roboter = new Roboter();
      }
      public static void main(String[] args){
+         boolean ende = false;
          Spielfeld aktuellesSpielfeld = new Spielfeld();
          Scanner scanner = new Scanner(System.in);
-         System.out.println("Funktion auswählen:");
-         System.out.println("1: Punkte eingeben");
-         System.out.println("2: Punkte sortieren");
-         System.out.println("3: Hindernisse erstellen");
-         String in = scanner.next();
-         switch(in){
-             case "1": aktuellesSpielfeld.punkteEingeben();
-             case "2": aktuellesSpielfeld.poiSortieren(aktuellesSpielfeld.punkte);
-             case "3": aktuellesSpielfeld.hindernisListeErzeugen();
-             case "ENDE": System.exit(0);
-             default: System.out.println("Befehl nicht erkannt");
-         }
+         while(!ende){
+             System.out.println("Funktion auswählen:");
+             System.out.println("1: Punkte eingeben");
+             System.out.println("2: Punkte sortieren");
+             System.out.println("3: Hindernisse erstellen");
+             String in = scanner.next();
+             switch(in.toUpperCase()){
+                 case "1": aktuellesSpielfeld.punkteEingeben(); break;
+                 case "2": aktuellesSpielfeld.poiSortieren(aktuellesSpielfeld.punkte); break;
+                 case "3": aktuellesSpielfeld.hindernisListeErzeugen(); break;
+                 case "ENDE": ende = true; break;
+                 default: System.out.println("Befehl nicht erkannt");
+                }
+            }
      }
      public Punkt[] punkteEingeben() //Koordinaten müssen einzelnd eingegeben werden
      {
