@@ -1,7 +1,11 @@
 #BlueJ class context
 comment0.target=Leinwand
 comment0.text=\n\ Beschreiben\ Sie\ hier\ die\ Klasse\ Leinwand.\n\ \n\ @author\ (Ihr\ Name)\ \n\ @version\ (eine\ Versionsnummer\ oder\ ein\ Datum)\n
-comment1.params=
-comment1.target=Leinwand()
+comment1.params=laenge\ breite
+comment1.target=Leinwand(int,\ int)
 comment1.text=\n\ Konstruktor\ f\u00FCr\ Objekte\ der\ Klasse\ Leinwand\n
-numComments=2
+comment2.params=ms
+comment2.target=void\ warten(int)
+comment3.params=hindernisse
+comment3.target=void\ zeichnen(java.util.ArrayList)
+numComments=4

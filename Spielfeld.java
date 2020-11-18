@@ -1,6 +1,7 @@
 import java.util.Scanner;
 import java.util.*;
 import java.awt.Color;
+import java.awt.EventQueue;
 import java.util.concurrent.ThreadLocalRandom;
 
  public class Spielfeld
@@ -9,15 +10,19 @@ import java.util.concurrent.ThreadLocalRandom;
      private int laenge = 1000; // Länge und Breite des Spielfeldes definiert
      private int a; // Anzahl der Punkte
      private Punkt[] punkte;
+     static Leinwand leinwand;
     
      public Spielfeld()
      {
          Roboter roboter = new Roboter();
+         leinwand = new Leinwand(breite,laenge);
      }
+     
      public static void main(String[] args){
          boolean ende = false;
          Spielfeld aktuellesSpielfeld = new Spielfeld();
          Scanner scanner = new Scanner(System.in);
+         leinwand.zeichenflaeche.setVisible(true);
          while(!ende){
              System.out.println("Funktion auswählen:");
              System.out.println("1: Punkte eingeben");
@@ -30,8 +35,10 @@ import java.util.concurrent.ThreadLocalRandom;
                  case "3": aktuellesSpielfeld.hindernisListeErzeugen(); break;
                  case "ENDE": ende = true; break;
                  default: System.out.println("Befehl nicht erkannt");
-                }
-            }
+             }
+         }
+         
+        
      }
      public Punkt[] punkteEingeben() //Koordinaten müssen einzelnd eingegeben werden
      {
@@ -171,6 +178,10 @@ import java.util.concurrent.ThreadLocalRandom;
         }
         return false;
         }
+      
+      public void zeichnen(ArrayList<Rechteck> hindernisse){
+          leinwand.zeichnen(hindernisse);
+      }
 }
 
 

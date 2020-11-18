@@ -10,8 +10,8 @@ import java.util.*;
 public class Leinwand
 {
     // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
-    private JFrame fenster = new JFrame();
-    private Zeichenflaeche zeichenflaeche;
+    public JFrame fenster = new JFrame();
+    public Zeichenflaeche zeichenflaeche;
     int laenge,breite;
     /**
      * Konstruktor für Objekte der Klasse Leinwand
@@ -20,21 +20,40 @@ public class Leinwand
     {
         this.laenge = laenge;
         this.breite = breite;
+        this.zeichenflaeche = new Zeichenflaeche();
     }
 
-    /**
-     * Ein Beispiel einer Methode - ersetzen Sie diesen Kommentar mit Ihrem eigenen
-     * 
-     * @param  y    ein Beispielparameter für eine Methode
-     * @return        die Summe aus x und y
-     */
+    public void warten(int ms){
+        try
+        {
+            Thread.sleep(ms);
+        }
+        catch(InterruptedException ex)
+        {
+            Thread.currentThread().interrupt();
+        }
+    }
+    
+    public void zeichnen(ArrayList<Rechteck> hindernisse){
+        if(zeichenflaeche == null){
+            zeichenflaeche = new Zeichenflaeche(hindernisse);
+            zeichenflaeche.repaintFiguren(hindernisse);
+        }
+        else{
+            zeichenflaeche.repaintFiguren(hindernisse);
+        }
+    }
 }
 
 class Zeichenflaeche extends JPanel{
-    ArrayList<Rechteck> rechteckliste;
+    public ArrayList<Rechteck> rechteckliste;
     public Zeichenflaeche(ArrayList<Rechteck> r)
     {
         this.rechteckliste = r;
+    }
+    
+    public Zeichenflaeche(){
+    
     }
     
     @Override
