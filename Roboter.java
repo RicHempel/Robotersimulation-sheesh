@@ -3,9 +3,10 @@ import java.util.Scanner;
 
 public class Roboter
 {
+    
     public enum Stichwort //vlt.static
     {
-        NAME, ALTER, HERSTELLER, GESCHLECHT, ENDE, FEHLER
+        NAME, ALTER, HERSTELLER, GESCHLECHT, ENDE, FEHLER 
     }
     /**
      * Konstruktor für Objekte der Klasse Roboter
@@ -23,13 +24,13 @@ public class Roboter
      */
     public void spracherkennung()
     {
-        boolean ende = false;
-        Scanner sc = new Scanner(System.in);
+        boolean ende = false; //falls "ende" geschrieben wird wird die Funktion beendet
+        Scanner sc = new Scanner(System.in); 
         Stichwort eingabe;
         while(!ende){
             System.out.println ("Stellen Sie eine Frage");
             try{
-                eingabe = Stichwort.valueOf(sc.next().toUpperCase());
+                eingabe = Stichwort.valueOf(sc.next().toUpperCase()); //schreibt alle buchstaben groß
             } catch(IllegalArgumentException ex){
                 eingabe = Stichwort.FEHLER;
            }
@@ -59,7 +60,12 @@ public class Roboter
            
            case FEHLER:
            System.out.println("Schlüsselwort nicht gefunden, bitte erneut versuchen.");
+           break;
+           
+          
+            
+            
         }
-    }   
-    }
-}
+      }   
+    }}
+

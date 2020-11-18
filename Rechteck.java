@@ -11,72 +11,73 @@ public class Rechteck
     private Color farbe; // Farbe ( Color.red, Color.yellow ) 
     
     
-    public Rechteck() // Anfangswerte definieren
-    {
-        position = new Punkt();
-        breite = 0;
-        laenge = 0;
-        bezeichnung = "";
-        farbe = java.awt.Color.green;
-    }
-
-    public Rechteck ( Punkt position, int breite, int laenge, String bezeichnung, Color farbe )
-    { // Benutzer soll Rechteck-Werte eingeben
-        this.position = position;
-        this.breite = breite;
-        this.laenge = laenge;
-        this. bezeichnung = "bezeichnung";
-        this.farbe = farbe;
-    }
-    
-    public void setPosition ( int x, int y )
-    {
-        position.setBoth(x,y);
-    }
-    
-    public Punkt getPosition()
-    {
-        return position;
-    }
-    
-    public void setBreite( int breite )
-    {
-        this.breite = breite;
-    }
-    
-    public int getBreite()
-    {
-        return breite;
-    }
-    
-    public void setLaenge( int laenge)
-    {
-        this.laenge = laenge;
-    }
-    
-    public int getLaenge()
-    {
-        return laenge;
-    }
-    
-    public void setBezeichnung( String bezeichnung )
-    {
-        this.bezeichnung = bezeichnung;
-    }
-    
-    public String getBezeichnung()
-    {
-        return bezeichnung;
-    }
-    
-    public void setFarbe( Color farbe )
-    {
-        this.farbe = farbe;
-        if ( farbe == java.awt.Color.white )
-        { farbe = java.awt.Color.black;
-            System.out.println ( "Das Rechteck darf nicht weiß sein. Bitte wählen Sie eine andere Farbe! ");
+        public Rechteck() // Anfangswerte definieren
+        {
+            position = new Punkt(); // die Klasse "Punkt" wird als Objekt erzeugt
+            breite = 0; //alle Variabeln werden definiert
+            laenge = 0;
+            bezeichnung = "";  
+            farbe = java.awt.Color.green;
         }
-    }
+
+        public Rechteck ( Punkt position, int breite, int laenge, String bezeichnung, Color farbe )
+        { // Benutzer soll Rechteck-Werte eingeben
+            this.position = position;
+            this.breite = breite;
+            this.laenge = laenge;
+            this. bezeichnung = "bezeichnung";
+            this.farbe = farbe;
+        }   
+    
+        public void setPosition ( int x, int y ) // die Werte des linken oberen Punktes des Rechtecks werden verändert
+        {
+            position.setBoth(x,y); // die Methode "setboth(x,y)" aus der Klasse Punkt wird verwendet
+        }
+    
+        public Punkt getPosition() // Zugriff auf die Koordinaten 
+        {
+            return position;
+        }
+    
+        public void setBreite( int breite ) // Veränderung der momentanen Breite des Rechtecks
+        {
+            this.breite = breite;
+        }
+    
+        public int getBreite() // Zugriff auf die Breite
+        {
+            return breite;
+        }
+    
+        public void setLaenge( int laenge) // die Länge des Rechtecks wird verändert
+        {
+            this.laenge = laenge;
+        }
+    
+        public int getLaenge() // Zugriff auf die Länge
+        {
+            return laenge;
+        }
+    
+        public void setBezeichnung( String bezeichnung ) // die Bezeichnung des Rechtecks wird verändert 
+        {
+            this.bezeichnung = bezeichnung;
+        }
+    
+        public String getBezeichnung() // Zugriff auf die Bezeichnung. "String", da die Bezeichnung ein Wort ist
+        {
+            return bezeichnung;
+        }
+    
+        public void setFarbe( Color farbe ) // die Frabe des Rechtecks wird verändert
+        {
+            if ( farbe == java.awt.Color.white )
+            { 
+                System.out.println ( "Das Rechteck darf nicht weiß sein. Bitte wählen Sie eine andere Farbe! ");
+                return;
+            }
+                this.farbe = farbe;
+        }
     
     public Color getFarbe()
     {

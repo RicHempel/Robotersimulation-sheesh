@@ -1,14 +1,33 @@
-import java.util.Scanner;
+ import java.util.Scanner;
 import java.util.*;
 import java.awt.Color;
 import java.util.concurrent.ThreadLocalRandom;
 
+
+
+    
  public class Spielfeld
  {
      private int breite = 1000;
      private int laenge = 1000; // Länge und Breite des Spielfeldes definiert
      private int a; // Anzahl der Punkte
      private Punkt[] punkte;
+     Roboter roboter = new Roboter();
+     
+     public static void main(String[] args){
+         Spielfeld aktuellesSpielfeld = new Spielfeld();
+         Scanner scanner = new Scanner(System.in);
+         System.out.println("Funktion auswählen:");
+         System.out.println("1: Punkte abfahren lassen");
+         System.out.println("2: Gespräch führen");
+         String in = scanner.next();
+         switch(in){
+             case "1": aktuellesSpielfeld.poiAbfahren();
+             case "2": aktuellesSpielfeld.poiSortieren(aktuellesSpielfeld.punkte);
+             case "3": aktuellesSpielfeld.hindernisListeErzeugen();
+             case "ENDE": System.exit(0);
+             default: System.out.println("Befehl nicht erkannt");
+         }
     
      public Spielfeld()
      {
@@ -120,17 +139,17 @@ import java.util.concurrent.ThreadLocalRandom;
          System.out.println( "Es werden " + hindernisAnzahl + " Hindernisse zufällig generiert.");
          int fehler=0;
          for(int i=1; i<hindernisAnzahl+1; i++){
-            Rechteck rechteck = zufallsRechteck(i);
-            if(!ueberlappt_test(rechteck, hindernisListe)){
+             Rechteck rechteck = zufallsRechteck(i);
+                if(!ueberlappt_test(rechteck, hindernisListe)){
                 hindernisListe.add(rechteck);
                 fehler = 0;
-            }
-            else{
+                 }
+                 else{
                 fehler++;
                 i--;
                 if(fehler>=50){
-                System.out.println("50 Überlappungen in Folge, Abbruch");
-                return null;
+                    System.out.println("50 Überlappungen in Folge, Abbruch");
+                    return null;
                 }
             }
             }
@@ -171,6 +190,10 @@ import java.util.concurrent.ThreadLocalRandom;
         }
         return false;
         }
+        
+        
+        
+        
 }
 
 
