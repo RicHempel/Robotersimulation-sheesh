@@ -62,8 +62,7 @@ import java.util.concurrent.ThreadLocalRandom;
           while (y<=0 | y>=1000)
           {
              System.out.println("Y muss sich zwischen 0 und 1000 befinden! Bitte wählen Sie erneut!");
-             Scanner sc4 = new Scanner(System.in);
-             y = sc4.nextInt();
+             y = sc.nextInt();
           }
          punkte [a-1] = new Punkt(x,y);
          System.out.println("Die Koordinaten des " + n + ". Punktes lauten (" + x + "/" + y +")");
