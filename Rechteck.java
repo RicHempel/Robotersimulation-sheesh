@@ -69,9 +69,9 @@ public class Rechteck
             return bezeichnung;
         }
     
-        public void setFarbe( Color farbe ) // die Frabe des Rechtecks wird verändert
+        public void setFarbe( Color farbe ) // die Farbe des Rechtecks wird verändert
         {
-            if ( farbe == java.awt.Color.white )
+            if ( farbe == java.awt.Color.white ) // falls der Nutzer das Rechteck weiß haben will, soll die Konsole Folgendes ausgeben:
             { 
                 System.out.println ( "Das Rechteck darf nicht weiß sein. Bitte wählen Sie eine andere Farbe! ");
                 return;
@@ -79,36 +79,36 @@ public class Rechteck
                 this.farbe = farbe;
         }
     
-    public Color getFarbe()
-    {
-        return farbe;
-    }
+        public Color getFarbe() // Zugriff auf die Farbe
+        {
+            return farbe;
+        }
     
-    public void bewegeUm( int dx, int dy ) // dx und dy müssen angegben werden
-    {
-        position.bewegeUm(dx,dy); // Punkt (x,y) deshalb beides gleichzeitig
-    }
+        public void bewegeUm( int dx, int dy ) // diese Methode verschiebt die aktuellen Koordinaten des Rechtecks um dx/dy Pixel
+        {
+            position.bewegeUm(dx,dy); // Punkt (x,y)... deshalb beides gleichzeitig
+        }
     
-    public void bewegeUm( Punkt verschiebevektor )
-    {
-        int x1 = verschiebevektor.getX();
-        int y1 = verschiebevektor.getY();
-        position.bewegeUm(x1,y1); 
-    }
+        public void bewegeUm( Punkt verschiebevektor ) 
+        {
+            int x1 = verschiebevektor.getX();
+            int y1 = verschiebevektor.getY();
+            position.bewegeUm(x1,y1); 
+        }
     
-    public void ausgabeAttribute()
-    {
-        System.out.println ( "Position = " + position );
-        System.out.println ( "Breite = " + breite );
-        System.out.println ( "Laenge = " + laenge );
-        System.out.println ( "Bezeichnung = " + bezeichnung );
-        System.out.println ( "Farbe = " + farbe );
-    }
+        public void ausgabeAttribute() // Die Methode soll alle Attribute des Rechtecks ausgeben
+        {
+            System.out.println ( "Position = " + position );
+            System.out.println ( "Breite = " + breite );
+            System.out.println ( "Laenge = " + laenge );
+            System.out.println ( "Bezeichnung = " + bezeichnung );
+            System.out.println ( "Farbe = " + farbe );
+        }
     
-    public boolean ueberlappt ( Rechteck r)
-    {        
-        return position.getX() < r.position.getX() + r.breite && position.getX() + breite > r.position.getX() && position.getY() < r.position.getY() + r.laenge && position.getY() + laenge > r.position.getY();
-    } 
+        public boolean ueberlappt ( Rechteck r)
+        {        
+            return position.getX() < r.position.getX() + r.breite && position.getX() + breite > r.position.getX() && position.getY() < r.position.getY() + r.laenge && position.getY() + laenge > r.position.getY();
+        } // 
     
 }
 

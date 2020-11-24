@@ -49,7 +49,7 @@ public class Punkt
     
         public double gibAbstand ( int x2, int y2 ) // die Methode soll den Abstand zwischen dem ertsen und zweiten berechnen 
         {
-        double d = sqrt(((x2-x)*(x2-x))+((y2-y)*(y2-y))); // Die Hypotenuse wird berechnet
+        double d = sqrt(((x2-x)*(x2-x))+((y2-y)*(y2-y))); // Die Hypotenuse wird berechnet ( Abstand zwischen 2 Punkten )
         return d; // Abstand wird ausgeben
         }
     
